@@ -43,31 +43,33 @@
 #define DEVICE_TH05D	24  // TH05_V1.3
 #define DEVICE_TH05F	25  // TH05Y_V1.2
 #define DEVICE_THB3		26
+#define DEVICE_TH05SC	27  // TH05Y_V1.2 + HX711
 
 #ifndef DEVICE
 #define DEVICE		DEVICE_THB3
 #endif
 
 // supported services by the device (bits)
-#define SERVICE_OTA			0x00000001	// есть функция OTA
-#define SERVICE_OTA_EXT		0x00000002	// пока нет // есть расширенная функция OTA
-#define SERVICE_PINCODE 	0x00000004	// пока нет // есть установка pin-code
-#define SERVICE_BINDKEY 	0x00000008	// есть шифрование
-#define SERVICE_HISTORY 	0x00000010	// есть запись истории
-#define SERVICE_SCREEN		0x00000020	// есть экран
-#define SERVICE_LE_LR		0x00000040	// пока нет // Есть поддержка рекламы в LE Long Range
-#define SERVICE_THS			0x00000080	// есть датчик температуры и влажности
-#define SERVICE_RDS			0x00000100	// есть обслуживние геркона/счета импульсов
-#define SERVICE_KEY			0x00000200	// есть кнопка
-#define SERVICE_OUTS		0x00000400	// пока нет // есть обслуживние выходных пинов
-#define SERVICE_INS			0x00000800	// пока нет // есть обслуживние входных пинов
-#define SERVICE_TIME_ADJUST 0x00001000	// пока нет // есть функция коррекции счета времени
-#define SERVICE_HARD_CLOCK	0x00002000	// пока нет // есть реальные часы RTC
-#define SERVICE_TH_TRG		0x00004000	// триггер по температуре и влажности
+#define SERVICE_OTA			0x00000001	// есть функция OTA there is an OTA function
+#define SERVICE_OTA_EXT		0x00000002	// пока нет // есть расширенная функция OTA there is an extended OTA function
+#define SERVICE_PINCODE 	0x00000004	// пока нет // есть установка pin-code there is a pin-code setting
+#define SERVICE_BINDKEY 	0x00000008	// есть шифрование there is encryption
+#define SERVICE_HISTORY 	0x00000010	// есть запись истории there is a history record
+#define SERVICE_SCREEN		0x00000020	// есть экран there is a screen
+#define SERVICE_LE_LR		0x00000040	// пока нет // Есть поддержка рекламы в LE Long Range there is support for advertising in LE Long Range
+#define SERVICE_THS			0x00000080	// есть датчик температуры и влажности there is a temperature and humidity sensor
+#define SERVICE_RDS			0x00000100	// есть обслуживние геркона/счета импульсов there is a reed switch/pulse count service
+#define SERVICE_KEY			0x00000200	// есть кнопка there is a button
+#define SERVICE_OUTS		0x00000400	// пока нет // есть обслуживние выходных пинов there is service of output pins
+#define SERVICE_INS			0x00000800	// пока нет // есть обслуживние входных пинов there is service of input pins
+#define SERVICE_TIME_ADJUST 0x00001000	// пока нет // есть функция коррекции счета времени there is a time count correction function
+#define SERVICE_HARD_CLOCK	0x00002000	// пока нет // есть реальные часы RTC there is a real RTC clock
+#define SERVICE_TH_TRG		0x00004000	// триггер по температуре и влажности trigger by temperature and humidity
 #define SERVICE_LED			0x00008000	// use led
+#define SERVICE_SCALE		0x00010000	// use scale
 
-#define OTA_TYPE_NONE	0	// нет OTA, только переключение из APP на boot прошивку
-#define OTA_TYPE_BOOT	SERVICE_OTA		// вариант для прошивки boot + OTA
+#define OTA_TYPE_NONE	0	// нет OTA, только переключение из APP на boot прошивку no OTA, only switching from APP to boot firmware
+#define OTA_TYPE_BOOT	SERVICE_OTA		// вариант для прошивки boot + OTA option for boot + OTA firmware
 #define OTA_TYPE_APP	OTA_TYPE_NONE
 
 #ifndef OTA_TYPE
@@ -98,7 +100,7 @@
 )
 #endif
 
-#define ADC_PIN_USE_OUT		0 //  есть резистор 0 к +Vbat
+#define ADC_PIN_USE_OUT		0 //  есть резистор 0 к +Vbat there is a resistor 0 to +Vbat
 #define ADC_PIN				GPIO_P11
 #define ADC_VBAT_CHL		VBAT_ADC_P11
 
@@ -140,7 +142,7 @@
 
 #define I2C_SDA 	GPIO_P33 // SDA
 #define I2C_SCL 	GPIO_P34 // SCL
-#define GPIO_SPWR	GPIO_P00 // питание сенсора
+#define GPIO_SPWR	GPIO_P00 // питание сенсора sensor power
 #define GPIO_KEY	GPIO_P14
 #define GPIO_LED	GPIO_P15
 #define LED_ON		1
@@ -186,9 +188,9 @@
 #define I2C_LCD_SDA GPIO_P33 // SDA
 #define I2C_LCD_SCL GPIO_P34 // SCL
 
-#define GPIO_SPWR	GPIO_P00 // питание сенсора
+#define GPIO_SPWR	GPIO_P00 // питание сенсора sensor power
 #define GPIO_KEY	GPIO_P14
-#define GPIO_LPWR	GPIO_P02 // питание LCD драйвера
+#define GPIO_LPWR	GPIO_P02 // питание LCD драйвера LCD driver power
 
 #define GPIO_TRG	GPIO_P20 // mark TX2
 #define GPIO_INP	GPIO_P18 // mark RX2
@@ -221,7 +223,7 @@
 )
 #endif
 
-#define ADC_PIN_USE_OUT		1	// нет подключения к +Vbat
+#define ADC_PIN_USE_OUT		1	// нет подключения к +Vbat no connection to +Vbat
 #define ADC_PIN				GPIO_P14
 #define ADC_VBAT_CHL		VBAT_ADC_P14
 
@@ -268,11 +270,11 @@
 )
 #endif
 
-//#define GPIO_LED	GPIO_P00 // не припаян
+//#define GPIO_LED	GPIO_P00 // не припаян 
 //#define LED_ON		1
 //#define LED_OFF		0
 
-#define ADC_PIN_USE_OUT		1	// нет подключения к +Vbat
+#define ADC_PIN_USE_OUT		1	// нет подключения к +Vbat no connection to +Vbat
 #define ADC_PIN				GPIO_P15
 #define ADC_VBAT_CHL		VBAT_ADC_P15
 
@@ -318,7 +320,7 @@
 //#define LED_ON		1
 //#define LED_OFF		0
 
-#define ADC_PIN_USE_OUT		1	// нет подключения к +Vbat
+#define ADC_PIN_USE_OUT		1	// нет подключения к +Vbat no connection to +Vbat
 #define ADC_PIN				GPIO_P11
 #define ADC_VBAT_CHL		VBAT_ADC_P11
 
@@ -331,9 +333,9 @@
 #define I2C_LCD_SDA GPIO_P26 // SDA
 #define I2C_LCD_SCL GPIO_P31 // SCL
 
-#define GPIO_SPWR	GPIO_P00 // питание сенсора
+#define GPIO_SPWR	GPIO_P00 // питание сенсора sensor power
 #define GPIO_KEY	GPIO_P14
-#define GPIO_LPWR	GPIO_P02 // питание LCD драйвера
+#define GPIO_LPWR	GPIO_P02 // питание LCD драйвера LCD driver power
 
 #define GPIO_TRG	GPIO_P20 // mark TX2
 #define GPIO_INP	GPIO_P18 // mark RX2
@@ -342,6 +344,51 @@
 #define DEF_HARDWARE_REVISION		"0019"
 #define DEF_MANUFACTURE_NAME_STR	"Tuya"
 
+#elif DEVICE == DEVICE_TH05SC
+/* Model: TH05Y_V1.2/1.2 */
+#if OTA_TYPE == OTA_TYPE_BOOT
+#define DEV_SERVICES (OTA_TYPE \
+		| SERVICE_SCREEN \
+		| SERVICE_THS \
+		| SERVICE_KEY \
+)
+#else
+#define DEV_SERVICES (OTA_TYPE \
+		| SERVICE_SCREEN \
+		| SERVICE_THS \
+		| SERVICE_KEY \
+		| SERVICE_BINDKEY \
+		| SERVICE_SCALE
+)
+#endif
+
+//#define GPIO_LED	GPIO_P15 // не припаян not soldered
+//#define LED_ON		1
+//#define LED_OFF		0
+
+#define ADC_PIN_USE_OUT		1	// нет подключения к +Vbat no connection to +Vbat
+#define ADC_PIN				GPIO_P11
+#define ADC_VBAT_CHL		VBAT_ADC_P11
+
+#define USE_TH_SENSOR	1
+#define USE_SECREEN		1
+
+#define I2C_SDA 	GPIO_P33 // SDA
+#define I2C_SCL 	GPIO_P34 // SCL
+
+#define I2C_LCD_SDA GPIO_P26 // SDA
+#define I2C_LCD_SCL GPIO_P31 // SCL
+
+#define GPIO_SPWR	GPIO_P00 // питание сенсора sensor power
+#define GPIO_KEY	GPIO_P14
+#define GPIO_LPWR	GPIO_P02 // питание LCD драйвера LCD driver power
+
+#define GPIO_SCCLK	GPIO_P20 // HX711 CLK
+#define GPIO_SCDAT	GPIO_P18 // HX711 DAT
+
+#define DEF_MODEL_NUMBER_STR		"TH05SC"
+#define DEF_HARDWARE_REVISION		"0019"
+#define DEF_MANUFACTURE_NAME_STR	"Tuya+HX711"
 #else
 #error "DEVICE Not released!"
 #endif
@@ -375,12 +422,13 @@ typedef struct _cfg_t {
 extern cfg_t cfg;
 extern const cfg_t def_cfg;
 
-#define FLG_MEAS_NOTIFY		0x00000001	// включить Notify измерений
-#define FLG_SHOW_TIME		0x00000002	// включить показ часов на LCD
-#define FLG_SHOW_SMILEY		0x00000004	// включить показ смайлика
-#define FLG_SHOW_TRG		0x00000008	// смайлик поаказывает TRG
-#define FLG_DISPLAY_OFF		0x00000010	// отключить дисплей
-#define FLG_ADV_CRYPT		0x00000020	// Зашифрованная BLE реклама (bindkey)
+#define FLG_MEAS_NOTIFY		0x00000001	// включить Notify измерений  enable measurement notifications
+#define FLG_SHOW_TIME		0x00000002	// включить показ часов на LCD 
+#define FLG_SHOW_SMILEY		0x00000004	// включить показ смайлика enable emoji display
+#define FLG_SHOW_TRG		0x00000008	// смайлик поаказывает TRG the emoji shows TRG
+#define FLG_DISPLAY_OFF		0x00000010	// отключить дисплей disable display
+
+#define FLG_ADV_CRYPT		0x00000020	// Зашифрованная BLE реклама (bindkey) Encrypted BLE advertisement (bindkey)
 #define FLG_SHOW_TF			0x00000040	// Show temperature in F.
 
 typedef struct _adv_work_t {
@@ -406,8 +454,8 @@ typedef struct _work_parm_t {
 #if (DEV_SERVICES & SERVICE_SCREEN)
 	uint8_t lcd_count;
 #endif
-	uint8_t lcd_ext_chow; // показ TH/Clock отключен
-	uint8_t reboot; // reboot on disconnect, записывается в [OTA_MODE_SELECT_REG]
+	uint8_t lcd_ext_chow; // показ TH/Clock отключен TH/Clock display disabled
+	uint8_t reboot; // reboot on disconnect, записывается в [OTA_MODE_SELECT_REG] 
 	uint8_t boot_flg; // байт из [OTA_MODE_SELECT_REG]
 } work_parm_t;
 extern work_parm_t wrk;

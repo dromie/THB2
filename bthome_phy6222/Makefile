@@ -27,6 +27,7 @@ SRC_PRJ += flash_eep.c
 SRC_PRJ += lcd_th05.c
 SRC_PRJ += lcd_th05d.c
 SRC_PRJ += lcd_th05f.c
+SRC_PRJ += lcd_th05sc.c
 SRC_PRJ += lcd_thb1.c
 SRC_PRJ += ble_ota.c
 SRC_PRJ += logger.c

@@ -273,6 +273,16 @@ const ioinit_cfg_t ioInit[] = {
 		{ GPIO_P10, GPIO_PULL_UP }, // RX - GPIO_INP
 		{ GPIO_P11, GPIO_PULL_UP }, // назначен как ADC_PIN
 		{ GPIO_P14, GPIO_PULL_UP }, // KEY - GPIO_KEY
+#elif (DEVICE == DEVICE_TH05SC)
+		{ GPIO_P00, GPIO_PULL_UP_S }, // GPIO_SPWR Sensor Vdd
+		{ GPIO_P01, GPIO_PULL_DOWN },
+		{ GPIO_P02, GPIO_FLOATING }, // GPIO_LPWR питание LCD драйвера
+		{ GPIO_P03, GPIO_PULL_DOWN },
+		{ GPIO_P07, GPIO_PULL_DOWN },
+		{ GPIO_P09, GPIO_PULL_UP }, // TX
+		{ GPIO_P10, GPIO_PULL_UP }, // RX - GPIO_INP
+		{ GPIO_P11, GPIO_PULL_UP }, // назначен как ADC_PIN
+		{ GPIO_P14, GPIO_PULL_UP }, // KEY - GPIO_KEY
 #ifdef GPIO_LED
 		{ GPIO_P15, GPIO_FLOATING }, // LED (R7/D1/GND)
 #else
